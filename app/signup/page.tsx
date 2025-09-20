@@ -34,6 +34,17 @@ export default function SignupPage() {
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
 
+  const handleDemoSignup = () => {
+    setFormData({
+      name: "Demo User",
+      email: "demo@cosmolaser.com",
+      phone: "32123456",
+      password: "demo123",
+      birthday: "1990-01-01",
+      countryCode: "+45",
+    })
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1D3F4F] via-[#2A5A6B] to-[#1D3F4F] flex flex-col lg:flex-row">
       {/* Left Side - Professional Doctor Consulting Image */}
@@ -75,6 +86,17 @@ export default function SignupPage() {
 
           <div className="space-y-6">
             <h2 className="text-white text-xl sm:text-2xl font-medium mb-6 sm:mb-8">Create profile & sign up</h2>
+
+            <div className="text-center mb-6">
+              <Button
+                type="button"
+                onClick={handleDemoSignup}
+                variant="outline"
+                className="bg-transparent border-[#DC7867] text-[#DC7867] hover:bg-[#DC7867] hover:text-white transition-all duration-200 px-6 py-2 rounded-lg"
+              >
+                Fill Demo Information
+              </Button>
+            </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">

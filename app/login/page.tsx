@@ -29,6 +29,11 @@ export default function LoginPage() {
     router.push("/dashboard")
   }
 
+  const handleDemoLogin = () => {
+    setEmail("demo@cosmolaser.com")
+    setPassword("demo123")
+  }
+
   return (
     <>
       <div className="min-h-screen bg-gradient-to-br from-[#1D3F4F] via-[#2A5A6B] to-[#1D3F4F] flex items-center justify-center p-4">
@@ -41,6 +46,17 @@ export default function LoginPage() {
           </div>
 
           <div className="space-y-6">
+            <div className="text-center">
+              <Button
+                type="button"
+                onClick={handleDemoLogin}
+                variant="outline"
+                className="bg-transparent border-[#DC7867] text-[#DC7867] hover:bg-[#DC7867] hover:text-white transition-all duration-200 px-6 py-2 rounded-lg"
+              >
+                Fill Demo Credentials
+              </Button>
+            </div>
+
             {/* Login Form */}
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
