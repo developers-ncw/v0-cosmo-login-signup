@@ -34,10 +34,10 @@ export default function LoginPage() {
       <div className="min-h-screen bg-gradient-to-br from-[#1D3F4F] via-[#2A5A6B] to-[#1D3F4F] flex items-center justify-center p-4">
         <div className="w-full max-w-md">
           {/* Header - matching signup page style */}
-          <div className="text-center mb-12">
-            <h1 className="text-5xl font-light text-white tracking-[0.2em] mb-2">COSMO</h1>
-            <p className="text-white/70 text-sm tracking-wide mb-8">ANSVARLIG SKÖNHED</p>
-            <h2 className="text-white text-xl font-medium">Already a member? Sign in.</h2>
+          <div className="text-center mb-8 sm:mb-12">
+            <h1 className="text-4xl sm:text-5xl font-light text-white tracking-[0.2em] mb-2">COSMO</h1>
+            <p className="text-white/70 text-sm tracking-wide mb-6 sm:mb-8">ANSVARLIG SKÖNHED</p>
+            <h2 className="text-white text-lg sm:text-xl font-medium">Already a member? Sign in.</h2>
           </div>
 
           <div className="space-y-6">
@@ -84,7 +84,7 @@ export default function LoginPage() {
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white font-medium py-3 h-12 rounded-xl transition-all duration-200 hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed mt-8"
+                className="w-full bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white font-medium py-3 h-12 rounded-xl transition-all duration-200 hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed mt-6 sm:mt-8"
               >
                 {isLoading ? (
                   <div className="flex items-center justify-center gap-2">
@@ -98,7 +98,7 @@ export default function LoginPage() {
             </form>
 
             {/* Footer */}
-            <div className="text-center mt-8">
+            <div className="text-center mt-6 sm:mt-8">
               <p className="text-white/70 text-sm">
                 New member?{" "}
                 <Link

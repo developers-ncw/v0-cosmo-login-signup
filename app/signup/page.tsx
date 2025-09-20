@@ -35,7 +35,7 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1D3F4F] via-[#2A5A6B] to-[#1D3F4F] flex">
+    <div className="min-h-screen bg-gradient-to-br from-[#1D3F4F] via-[#2A5A6B] to-[#1D3F4F] flex flex-col lg:flex-row">
       {/* Left Side - Professional Doctor Consulting Image */}
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1D3F4F] via-[#2A5A6B] to-[#1D3F4F]">
@@ -59,11 +59,11 @@ export default function SignupPage() {
       </div>
 
       {/* Right Side - Signup Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-[#1D3F4F]">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-[#1D3F4F]">
         <div className="w-full max-w-md">
           {/* Mobile Header */}
-          <div className="lg:hidden text-center mb-8">
-            <h1 className="text-4xl font-light text-white tracking-[0.2em] mb-2">COSMO</h1>
+          <div className="lg:hidden text-center mb-6 sm:mb-8">
+            <h1 className="text-3xl sm:text-4xl font-light text-white tracking-[0.2em] mb-2">COSMO</h1>
             <p className="text-white/70 text-sm tracking-wide">ANSVARLIG SKÖNHED</p>
           </div>
 
@@ -74,7 +74,7 @@ export default function SignupPage() {
           </div>
 
           <div className="space-y-6">
-            <h2 className="text-white text-2xl font-medium mb-8">Create profile & sign up</h2>
+            <h2 className="text-white text-xl sm:text-2xl font-medium mb-6 sm:mb-8">Create profile & sign up</h2>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
@@ -109,12 +109,14 @@ export default function SignupPage() {
                 <Label htmlFor="phone" className="text-white text-sm font-medium">
                   Phone
                 </Label>
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <Select
                     value={formData.countryCode}
                     onValueChange={(value) => handleInputChange("countryCode", value)}
                   >
-                    
+                    <SelectTrigger className="w-full sm:w-24 bg-transparent border-[#3A6A7B] text-white focus:border-[#DC7867] focus:ring-[#DC7867]/20 rounded-lg h-12">
+                      <SelectValue />
+                    </SelectTrigger>
                     <SelectContent className="bg-[#2A5A6B] border-[#3A6A7B] text-white rounded-lg">
                       <SelectItem value="+45">DK +45</SelectItem>
                       <SelectItem value="+1">US +1</SelectItem>
@@ -166,7 +168,7 @@ export default function SignupPage() {
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white font-medium py-3 h-12 rounded-xl transition-all duration-200 hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed mt-8"
+                className="w-full bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white font-medium py-3 h-12 rounded-xl transition-all duration-200 hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed mt-6 sm:mt-8"
               >
                 {isLoading ? (
                   <div className="flex items-center justify-center gap-2">

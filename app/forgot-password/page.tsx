@@ -23,17 +23,19 @@ export default function ForgotPasswordPage() {
     return (
       <div className="min-h-screen bg-[#1D3F4F] flex items-center justify-center p-4">
         <div className="w-full max-w-md text-center">
-          <div className="mb-12">
-            <h1 className="text-5xl font-light text-white tracking-[0.2em] mb-2">COSMO</h1>
+          <div className="mb-8 sm:mb-12">
+            <h1 className="text-4xl sm:text-5xl font-light text-white tracking-[0.2em] mb-2">COSMO</h1>
             <p className="text-white/70 text-sm tracking-wide">ANSVARLIG SKÖNHED</p>
           </div>
 
-          <div className="bg-[#1D3F4F]/80 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-white/10">
-            <h2 className="text-white text-xl font-medium mb-6">Check your email</h2>
-            <p className="text-white/70 mb-8 leading-relaxed">We've sent a password reset link to {email}</p>
+          <div className="bg-[#1D3F4F]/80 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-2xl border border-white/10">
+            <h2 className="text-white text-lg sm:text-xl font-medium mb-4 sm:mb-6">Check your email</h2>
+            <p className="text-white/70 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
+              We've sent a password reset link to {email}
+            </p>
             <Link
               href="/login"
-              className="inline-block bg-[#DC7867] hover:bg-[#DC7867]/90 text-white font-medium py-3 px-8 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#DC7867]/25"
+              className="inline-block bg-[#DC7867] hover:bg-[#DC7867]/90 text-white font-medium py-3 px-6 sm:px-8 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#DC7867]/25"
             >
               Back to Sign In
             </Link>
@@ -46,11 +48,11 @@ export default function ForgotPasswordPage() {
   return (
     <div className="min-h-screen bg-[#1D3F4F] flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-light text-white tracking-[0.2em] mb-2">COSMO</h1>
-          <p className="text-white/70 text-sm tracking-wide mb-8">ANSVARLIG SKÖNHED</p>
-          <h2 className="text-white text-xl font-medium">Reset your password</h2>
-          <p className="text-white/70 mt-2">Enter your email to receive a reset link</p>
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="text-4xl sm:text-5xl font-light text-white tracking-[0.2em] mb-2">COSMO</h1>
+          <p className="text-white/70 text-sm tracking-wide mb-6 sm:mb-8">ANSVARLIG SKÖNHED</p>
+          <h2 className="text-white text-lg sm:text-xl font-medium">Reset your password</h2>
+          <p className="text-white/70 mt-2 text-sm sm:text-base">Enter your email to receive a reset link</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -76,7 +78,7 @@ export default function ForgotPasswordPage() {
           </Button>
         </form>
 
-        <div className="text-center mt-8">
+        <div className="text-center mt-6 sm:mt-8">
           <Link href="/login" className="text-white/70 hover:text-white text-sm underline transition-colors">
             Back to Sign In
           </Link>

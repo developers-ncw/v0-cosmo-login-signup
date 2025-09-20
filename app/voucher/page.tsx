@@ -69,17 +69,22 @@ export default function VoucherPage() {
               </div>
             </div>
 
-            <div className="flex items-center space-x-4">
-              <select className="bg-transparent text-white/70 text-sm border-none outline-none">
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              <select className="hidden sm:block bg-transparent text-white/70 text-sm border-none outline-none">
                 <option>English</option>
               </select>
               <Button
                 onClick={() => router.push("/book-time")}
-                className="bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white px-6 py-2 rounded-xl transition-all duration-200"
+                className="bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white px-3 sm:px-6 py-2 rounded-xl transition-all duration-200 text-sm sm:text-base"
               >
-                BOOK A TIME
+                <span className="hidden sm:inline">BOOK A TIME</span>
+                <span className="sm:hidden">BOOK</span>
               </Button>
-              <Button onClick={() => router.push("/signup")} variant="ghost" className="text-white/70 hover:text-white">
+              <Button
+                onClick={() => router.push("/signup")}
+                variant="ghost"
+                className="hidden sm:flex text-white/70 hover:text-white"
+              >
                 Log Out
               </Button>
             </div>
@@ -88,7 +93,7 @@ export default function VoucherPage() {
       </header>
 
       {/* Hero Section */}
-      <div className="relative h-64 overflow-hidden">
+      <div className="relative h-48 sm:h-64 overflow-hidden">
         <img
           src="/professional-doctor-consulting-patient-in-modern-h.jpg"
           alt="Professional treatment"
@@ -96,17 +101,17 @@ export default function VoucherPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30" />
         <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-white font-serif font-medium text-5xl">VOUCHER</h1>
+          <h1 className="text-white font-serif font-medium text-3xl sm:text-4xl lg:text-5xl">VOUCHER</h1>
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="max-w-4xl mx-auto px-4 py-6 sm:py-8">
         {/* Tab Navigation */}
-        <div className="flex justify-center mb-8">
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-1 flex gap-3">
+        <div className="flex justify-center mb-6 sm:mb-8">
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-1 flex gap-2 sm:gap-3 w-full max-w-md">
             <button
               onClick={() => setActiveTab("active")}
-              className={`px-6 py-2 rounded-lg font-medium transition-all duration-200 ${
+              className={`flex-1 px-4 sm:px-6 py-2 rounded-lg font-medium transition-all duration-200 text-sm sm:text-base ${
                 activeTab === "active"
                   ? "bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] text-white shadow-lg"
                   : "text-white/70 hover:text-white hover:bg-white/10"
@@ -116,7 +121,7 @@ export default function VoucherPage() {
             </button>
             <button
               onClick={() => setActiveTab("used")}
-              className={`px-6 py-2 rounded-lg font-medium transition-all duration-200 ${
+              className={`flex-1 px-4 sm:px-6 py-2 rounded-lg font-medium transition-all duration-200 text-sm sm:text-base ${
                 activeTab === "used"
                   ? "bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] text-white shadow-lg"
                   : "text-white/70 hover:text-white hover:bg-white/10"
@@ -128,43 +133,43 @@ export default function VoucherPage() {
         </div>
 
         {/* Vouchers List */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {activeTab === "active" &&
             activeVouchers.map((voucher) => (
               <div
                 key={voucher.id}
-                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
+                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300"
               >
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between mb-4 gap-4">
                   <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] rounded-full flex items-center justify-center flex-shrink-0">
                       <Gift className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white">Voucher Type: {voucher.type}</h3>
+                      <h3 className="text-base sm:text-lg font-semibold text-white">Voucher Type: {voucher.type}</h3>
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-white/70">Code:</span>
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <span className="text-white/70 text-sm sm:text-base">Code:</span>
                     <div className="flex items-center space-x-2">
-                      <span className="text-white font-mono">
+                      <span className="text-white font-mono text-sm sm:text-base break-all">
                         {visibleCodes[voucher.id] ? voucher.fullCode : voucher.code}
                       </span>
                       <button
                         onClick={() => toggleCodeVisibility(voucher.id)}
-                        className="p-1 text-white/70 hover:text-white transition-colors"
+                        className="p-1 text-white/70 hover:text-white transition-colors flex-shrink-0"
                       >
                         {visibleCodes[voucher.id] ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between">
-                    <span className="text-white/70">Valid From:</span>
-                    <span className="text-white">{voucher.validFrom}</span>
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <span className="text-white/70 text-sm sm:text-base">Valid From:</span>
+                    <span className="text-white text-sm sm:text-base">{voucher.validFrom}</span>
                   </div>
                 </div>
               </div>
@@ -174,39 +179,39 @@ export default function VoucherPage() {
             usedVouchers.map((voucher) => (
               <div
                 key={voucher.id}
-                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 opacity-75 hover:bg-white/10 transition-all duration-300"
+                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 opacity-75 hover:bg-white/10 transition-all duration-300"
               >
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between mb-4 gap-4">
                   <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
                       <Gift className="w-6 h-6 text-white/70" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white/80">Voucher Type: {voucher.type}</h3>
+                      <h3 className="text-base sm:text-lg font-semibold text-white/80">Voucher Type: {voucher.type}</h3>
                       <span className="text-sm text-white/50">Used on {voucher.usedDate}</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-white/60">Code:</span>
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <span className="text-white/60 text-sm sm:text-base">Code:</span>
                     <div className="flex items-center space-x-2">
-                      <span className="text-white/70 font-mono">
+                      <span className="text-white/70 font-mono text-sm sm:text-base break-all">
                         {visibleCodes[voucher.id] ? voucher.fullCode : voucher.code}
                       </span>
                       <button
                         onClick={() => toggleCodeVisibility(voucher.id)}
-                        className="p-1 text-white/60 hover:text-white/80 transition-colors"
+                        className="p-1 text-white/60 hover:text-white/80 transition-colors flex-shrink-0"
                       >
                         {visibleCodes[voucher.id] ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between">
-                    <span className="text-white/60">Valid From:</span>
-                    <span className="text-white/70">{voucher.validFrom}</span>
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <span className="text-white/60 text-sm sm:text-base">Valid From:</span>
+                    <span className="text-white/70 text-sm sm:text-base">{voucher.validFrom}</span>
                   </div>
                 </div>
               </div>
@@ -219,7 +224,7 @@ export default function VoucherPage() {
           <div className="text-center py-12">
             <Gift className="w-16 h-16 text-white/30 mx-auto mb-4" />
             <h3 className="text-xl font-semibold text-white/70 mb-2">No {activeTab} vouchers</h3>
-            <p className="text-white/50 mb-6">
+            <p className="text-white/50 mb-6 px-4">
               {activeTab === "active"
                 ? "You don't have any active vouchers at the moment."
                 : "You don't have any used vouchers yet."}
@@ -242,32 +247,32 @@ export default function VoucherPage() {
               onClick={() => router.push("/dashboard")}
               className="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-colors"
             >
-              <Home className="w-6 h-6" />
+              <Home className="w-5 h-5 sm:w-6 sm:h-6" />
               <span className="text-xs">Home</span>
             </button>
             <button
               onClick={() => router.push("/purchases")}
               className="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-colors"
             >
-              <ShoppingBag className="w-6 h-6" />
+              <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6" />
               <span className="text-xs">Purchases</span>
             </button>
             <button
               onClick={() => router.push("/booking")}
               className="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-colors"
             >
-              <Calendar className="w-6 h-6" />
+              <Calendar className="w-5 h-5 sm:w-6 sm:h-6" />
               <span className="text-xs">Booking</span>
             </button>
             <button className="flex flex-col items-center gap-1 text-[#DC7867]">
-              <Gift className="w-6 h-6" />
+              <Gift className="w-5 h-5 sm:w-6 sm:h-6" />
               <span className="text-xs">Voucher</span>
             </button>
             <button
               onClick={() => router.push("/coupon")}
               className="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-colors"
             >
-              <Percent className="w-6 h-6" />
+              <Percent className="w-5 h-5 sm:w-6 sm:h-6" />
               <span className="text-xs">Discount</span>
             </button>
           </div>

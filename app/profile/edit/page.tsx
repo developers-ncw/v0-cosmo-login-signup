@@ -79,17 +79,22 @@ export default function EditProfilePage() {
               </div>
             </div>
 
-            <div className="flex items-center space-x-4">
-              <select className="bg-transparent text-white/70 text-sm border-none outline-none">
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              <select className="hidden sm:block bg-transparent text-white/70 text-sm border-none outline-none">
                 <option>English</option>
               </select>
               <Button
                 onClick={() => router.push("/book-time")}
-                className="bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white px-6 py-2 rounded-xl transition-all duration-200"
+                className="bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white px-3 sm:px-6 py-2 rounded-xl transition-all duration-200 text-sm sm:text-base"
               >
-                BOOK A TIME
+                <span className="hidden sm:inline">BOOK A TIME</span>
+                <span className="sm:hidden">BOOK</span>
               </Button>
-              <Button onClick={() => router.push("/signup")} variant="ghost" className="text-white/70 hover:text-white">
+              <Button
+                onClick={() => router.push("/signup")}
+                variant="ghost"
+                className="hidden sm:flex text-white/70 hover:text-white"
+              >
                 Log Out
               </Button>
             </div>
@@ -97,18 +102,25 @@ export default function EditProfilePage() {
         </div>
       </header>
 
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="max-w-4xl mx-auto px-4 py-6 sm:py-8">
         {/* Page Header */}
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl text-white font-medium font-serif">Edit</h1>
-          <Button onClick={() => router.push("/profile")} variant="ghost" className="text-white/70 hover:text-white">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8 gap-4">
+          <h1 className="text-2xl sm:text-3xl text-white font-medium font-serif">Edit</h1>
+          <Button
+            onClick={() => router.push("/profile")}
+            variant="ghost"
+            className="text-white/70 hover:text-white w-fit"
+          >
             Back
           </Button>
         </div>
 
         {/* Edit Form */}
-        <form onSubmit={handleSubmit} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
-          <div className="grid md:grid-cols-3 gap-6">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 lg:p-8"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {/* Row 1 */}
             <div>
               <label className="block text-white/70 text-sm font-medium mb-2">Customer Name</label>
@@ -272,8 +284,8 @@ export default function EditProfilePage() {
           </div>
 
           {/* Newsletter and Reminder Options */}
-          <div className="mt-8 space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
+          <div className="mt-6 sm:mt-8 space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-white/70 text-sm font-medium mb-3">Customer Newsletter SMS</label>
                 <div className="flex space-x-4">
@@ -389,11 +401,11 @@ export default function EditProfilePage() {
           </div>
 
           {/* Submit Button */}
-          <div className="mt-8 flex justify-center">
+          <div className="mt-6 sm:mt-8 flex justify-center">
             <Button
               type="submit"
               disabled={isLoading}
-              className="bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white px-8 py-3 rounded-xl font-medium transition-all duration-200 flex items-center space-x-2 disabled:opacity-70 disabled:cursor-not-allowed"
+              className="bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white px-6 sm:px-8 py-3 rounded-xl font-medium transition-all duration-200 flex items-center space-x-2 disabled:opacity-70 disabled:cursor-not-allowed w-full sm:w-auto"
             >
               {isLoading ? (
                 <>

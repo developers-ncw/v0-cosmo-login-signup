@@ -47,17 +47,22 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            <div className="flex items-center space-x-4">
-              <select className="bg-transparent text-white/70 text-sm border-none outline-none">
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              <select className="hidden sm:block bg-transparent text-white/70 text-sm border-none outline-none">
                 <option>English</option>
               </select>
               <Button
                 onClick={() => router.push("/book-time")}
-                className="bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white px-6 py-2 rounded-xl transition-all duration-200"
+                className="bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white px-3 sm:px-6 py-2 rounded-xl transition-all duration-200 text-sm sm:text-base"
               >
-                BOOK A TIME
+                <span className="hidden sm:inline">BOOK A TIME</span>
+                <span className="sm:hidden">BOOK</span>
               </Button>
-              <Button onClick={() => router.push("/signup")} variant="ghost" className="text-white/70 hover:text-white">
+              <Button
+                onClick={() => router.push("/signup")}
+                variant="ghost"
+                className="hidden sm:flex text-white/70 hover:text-white"
+              >
                 Log Out
               </Button>
             </div>
@@ -65,13 +70,13 @@ export default function ProfilePage() {
         </div>
       </header>
 
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="max-w-4xl mx-auto px-4 py-6 sm:py-8">
         {/* Profile Header */}
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="text-white font-serif font-medium text-4xl">Personal Info</h1>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8 gap-4">
+          <h1 className="text-white font-serif font-medium text-3xl sm:text-4xl">Personal Info</h1>
           <Button
             onClick={() => router.push("/profile/edit")}
-            className="bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white px-6 py-2 transition-all duration-200 flex items-center space-x-2 rounded-lg"
+            className="bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white px-6 py-2 transition-all duration-200 flex items-center space-x-2 rounded-lg w-fit"
           >
             <Edit className="w-4 h-4" />
             <span>Edit</span>
@@ -79,8 +84,8 @@ export default function ProfilePage() {
         </div>
 
         {/* Profile Information */}
-        <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 mb-8">
-          <div className="grid md:grid-cols-2 gap-6">
+        <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8 mb-6 sm:mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Left Column */}
             <div className="space-y-6">
               <div>
@@ -138,7 +143,7 @@ export default function ProfilePage() {
 
               <div>
                 <label className="text-white/70 text-sm font-medium">Email</label>
-                <p className="text-white mt-1">{profileData.email}</p>
+                <p className="text-white mt-1 break-all">{profileData.email}</p>
               </div>
 
               <div>
@@ -155,16 +160,16 @@ export default function ProfilePage() {
         </div>
 
         {/* Reward Balance Section */}
-        <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
+        <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8">
           <div className="text-center">
             <div className="w-16 h-16 bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] rounded-full flex items-center justify-center mx-auto mb-4">
               <Star className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-white mb-2 font-serif font-medium text-2xl">Reward Balance</h3>
-            <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] mb-2">
+            <h3 className="text-white mb-2 font-serif font-medium text-xl sm:text-2xl">Reward Balance</h3>
+            <div className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] mb-2">
               10
             </div>
-            <p className="text-white/70">Points available for redemption</p>
+            <p className="text-white/70 text-sm sm:text-base">Points available for redemption</p>
           </div>
         </div>
       </div>
