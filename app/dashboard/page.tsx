@@ -230,12 +230,10 @@ export default function DashboardPage() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="relative z-10 flex items-center justify-center h-full text-center px-4">
+            <div className="relative z-10 flex justify-center h-full text-center px-4 items-center mt-10">
               <div>
-                <h2 className="text-white font-medium mb-2 text-2xl sm:text-3xl lg:text-4xl border-foreground">
-                  Join Us on
-                </h2>
-                <h3 className="text-white text-xl sm:text-2xl lg:text-3xl font-light mb-4">Facebook</h3>
+                
+                
                 <Button
                   variant="default"
                   className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border border-white/30 px-6 sm:px-8 py-3 rounded-xl transition-all duration-200 hover:shadow-lg tracking-wide text-sm sm:text-base"
