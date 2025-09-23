@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, Edit, Star } from "lucide-react"
+import { ArrowLeft, Edit, Star, LogOut } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 export default function ProfilePage() {
@@ -58,13 +58,13 @@ export default function ProfilePage() {
                 <span className="hidden sm:inline">BOOK A TIME</span>
                 <span className="sm:hidden">BOOK</span>
               </Button>
-              <Button
-                onClick={() => router.push("/login")} // Navigate to login page instead of signup
-                variant="ghost"
-                className="hidden sm:flex text-white/70 hover:text-black"
+              <button
+                onClick={() => router.push("/login")}
+                className="hidden sm:flex items-center gap-2 text-white/70 dark:text-gray-300 hover:text-white dark:hover:text-gray-100 transition-colors"
               >
-                Log Out
-              </Button>
+                <LogOut className="w-4 h-4" />
+                <span className="text-sm">Log Out</span>
+              </button>
             </div>
           </div>
         </div>

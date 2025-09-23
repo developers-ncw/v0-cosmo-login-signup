@@ -320,7 +320,7 @@ export default function BookingPage() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-semibold text-white">Booking Details</h2>
+              <h2 className="text-white text-2xl tracking-normal font-serif font-normal leading-7">Booking Details</h2>
               <button
                 onClick={() => setShowDetailsModal(false)}
                 onKeyDown={(e) => handleKeyDown(e, () => setShowDetailsModal(false))}
@@ -367,7 +367,7 @@ export default function BookingPage() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="text-center">
-              <h2 className="text-xl font-semibold text-white mb-4">Delete Booking</h2>
+              <h2 className="text-white mb-4 font-serif text-2xl tracking-normal leading-7 font-extralight">Delete Booking</h2>
               <p className="text-white/70 mb-6">Are you sure you want to delete this booking?</p>
 
               <div className="flex space-x-3">

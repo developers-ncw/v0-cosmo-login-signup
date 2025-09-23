@@ -36,7 +36,7 @@ export default function Header() {
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="bg-[#2A5A6B]/50 dark:bg-gray-800/50 border border-[#3A6A7B] dark:border-gray-600 text-white dark:text-gray-100 placeholder:text-white/50 dark:placeholder:text-gray-400 pl-10 pr-4 py-2 rounded-lg focus:border-[#DC7867] dark:focus:border-orange-400 focus:ring-[#DC7867]/20 dark:focus:ring-orange-400/20 transition-colors duration-200 w-48"
+                className="bg-[#2A5A6B]/50 dark:bg-gray-800/50 border border-[#3A6A7B] dark:border-gray-600 text-white dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 pl-10 pr-4 py-2 rounded-lg focus:border-[#DC7867] dark:focus:border-orange-400 focus:ring-0 focus:outline-none transition-colors duration-200 w-48 h-10"
               />
             </div>
 

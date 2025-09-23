@@ -63,7 +63,7 @@ export default function DashboardPage() {
                 Become a Model
               </h3>
               <p className="text-white/70 dark:text-gray-300 text-sm mb-4 sm:mb-6">Join our community</p>
-              <Button className="w-full bg-gradient-to-r from-[#3A6A7B] to-[#2A5A6B] hover:from-[#2A5A6B] hover:to-[#3A6A7B] dark:from-gray-700 dark:to-gray-800 dark:hover:from-gray-800 dark:hover:to-gray-700 text-white py-3 rounded-xl transition-all duration-200 hover:shadow-lg border border-[#DC7867]/30 dark:border-orange-400/30 text-sm sm:text-base">
+              <Button className="w-full bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] dark:from-orange-500 dark:to-orange-600 dark:hover:from-orange-600 dark:hover:to-orange-500 text-white py-3 rounded-xl transition-all duration-200 hover:shadow-lg text-sm sm:text-base">
                 Get Started
               </Button>
             </div>
@@ -117,7 +117,10 @@ export default function DashboardPage() {
                 Questionnaire
               </h3>
               <p className="text-white/70 dark:text-gray-300 text-sm mb-4 sm:mb-6">Health assessment</p>
-              <Button className="w-full bg-gradient-to-r from-[#3A6A7B] to-[#2A5A6B] hover:from-[#2A5A6B] hover:to-[#3A6A7B] dark:from-gray-700 dark:to-gray-800 dark:hover:from-gray-800 dark:hover:to-gray-700 text-white py-3 rounded-xl transition-all duration-200 hover:shadow-lg border border-[#DC7867]/30 dark:border-orange-400/30 text-sm sm:text-base">
+              <Button
+                onClick={() => router.push("/questionnaire")}
+                className="w-full bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] dark:from-orange-500 dark:to-orange-600 dark:hover:from-orange-600 dark:hover:to-orange-500 text-white py-3 rounded-xl transition-all duration-200 hover:shadow-lg text-sm sm:text-base"
+              >
                 Get Started
               </Button>
             </div>
@@ -179,12 +182,14 @@ export default function DashboardPage() {
             </div>
             <div className="relative z-10 flex justify-center h-full text-center px-4 items-center mt-10">
               <div>
-                <Button
-                  variant="default"
-                  className="bg-white/20 backdrop-blur-sm hover:bg-white/30 dark:bg-gray-800/20 dark:hover:bg-gray-800/30 text-white border border-white/30 dark:border-gray-300/30 px-6 sm:px-8 py-3 rounded-xl transition-all duration-200 hover:shadow-lg tracking-wide text-sm sm:text-base"
-                >
-                  Connect Now
-                </Button>
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                  <Button
+                    variant="default"
+                    className="bg-white/20 backdrop-blur-sm hover:bg-white/30 dark:bg-gray-800/20 dark:hover:bg-gray-800/30 text-white border border-white/30 dark:border-gray-300/30 px-6 sm:px-8 py-3 rounded-xl transition-all duration-200 hover:shadow-lg tracking-wide text-sm sm:text-base"
+                  >
+                    Connect Now
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
