@@ -2,7 +2,8 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, Eye, EyeOff, Gift, Calendar, Home, ShoppingBag, Percent } from "lucide-react"
+import Header from "@/components/header"
+import { Eye, EyeOff, Gift, Calendar, Home, ShoppingBag, Percent } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 export default function VoucherPage() {
@@ -47,50 +48,7 @@ export default function VoucherPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1D3F4F] via-[#2A5A6B] to-[#1D3F4F] pb-20">
-      {/* Header */}
-      <header className="border-b border-white/10 bg-black/20 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={() => router.push("/dashboard")}
-                className="p-2 text-white/70 hover:text-white transition-colors"
-              >
-                <ArrowLeft className="w-5 h-5" />
-              </button>
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">C</span>
-                </div>
-                <div>
-                  <h1 className="text-white font-semibold">COSMO</h1>
-                  <p className="text-white/60 text-xs">AESTHETIC SERVICES</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-2 sm:space-x-4">
-              <select className="hidden sm:block bg-transparent text-white/70 text-sm border-none outline-none">
-                <option>English</option>
-              </select>
-              <Button
-                onClick={() => router.push("/book-time")}
-                className="bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white px-3 sm:px-6 py-2 rounded-xl transition-all duration-200 text-sm sm:text-base"
-              >
-                <span className="hidden sm:inline">BOOK A TIME</span>
-                <span className="sm:hidden">BOOK</span>
-              </Button>
-              <Button
-                onClick={() => router.push("/signup")}
-                variant="ghost"
-                className="hidden sm:flex text-white/70 hover:text-white"
-              >
-                Log Out
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <div className="relative h-48 sm:h-64 overflow-hidden">
@@ -240,7 +198,7 @@ export default function VoucherPage() {
       </div>
 
       {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-[#1D3F4F]/90 backdrop-blur-sm border-t border-[#3A6A7B]/30">
+      <nav className="fixed bottom-0 left-0 right-0 bg-[#1D3F4F]/90 backdrop-blur-sm border-t border-[#3A6A7B]/30 z-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-around py-4">
             <button

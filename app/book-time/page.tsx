@@ -6,8 +6,9 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
-import { ArrowLeft, Phone, Mail, User, Star } from "lucide-react"
+import { Phone, Mail, User, Star, ArrowLeft } from "lucide-react"
 import { useRouter } from "next/navigation"
+import Header from "@/components/header"
 
 export default function BookTimePage() {
   const router = useRouter()
@@ -21,44 +22,26 @@ export default function BookTimePage() {
     console.log("Newsletter signup:", { email, name, agreed })
   }
 
+  const handleBack = () => {
+    router.back()
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1D3F4F] via-[#2A5A6B] to-[#1D3F4F]">
-      {/* Header */}
-      <header className="border-b border-white/10 bg-black/20 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-4">
-              <button onClick={() => router.back()} className="p-2 text-white/70 hover:text-white transition-colors">
-                <ArrowLeft className="w-5 h-5" />
-              </button>
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">C</span>
-                </div>
-                <div>
-                  <h1 className="text-white font-semibold">COSMO</h1>
-                  <p className="text-white/60 text-xs">AESTHETIC SERVICES</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-2 sm:space-x-4">
-              <select className="hidden sm:block bg-transparent text-white/70 text-sm border-none outline-none">
-                <option>English</option>
-              </select>
-              <Button
-                onClick={() => router.push("/dashboard")}
-                className="bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white px-3 sm:px-6 py-2 rounded-xl transition-all duration-200 text-sm sm:text-base"
-              >
-                <span className="hidden sm:inline">Dashboard</span>
-                <span className="sm:hidden">Home</span>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <div className="max-w-6xl mx-auto px-4 py-8 sm:py-12">
+        <div className="mb-6">
+          <Button
+            onClick={handleBack}
+            variant="ghost"
+            className="text-white hover:bg-white/10 p-2 rounded-xl transition-all duration-200"
+          >
+            <ArrowLeft className="w-5 h-5 mr-2" />
+            Back
+          </Button>
+        </div>
+
         {/* Hero Section */}
         <div className="text-center mb-12 sm:mb-16">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">

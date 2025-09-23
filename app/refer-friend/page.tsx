@@ -62,7 +62,7 @@ export default function ReferFriendPage() {
               </Button>
 
               <button
-                onClick={() => router.push("/signup")}
+                onClick={() => router.push("/login")} // Navigate to login page instead of signup
                 className="hidden sm:flex items-center gap-2 text-white/70 hover:text-white transition-colors"
               >
                 <LogOut className="w-4 h-4" />
@@ -109,7 +109,7 @@ export default function ReferFriendPage() {
                   placeholder="Enter friend's name"
                   value={friendName}
                   onChange={(e) => setFriendName(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#DC7867] focus:border-[#DC7867] transition-colors"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#DC7867] focus:border-[#DC7867] transition-colors text-secondary-foreground"
                 />
               </div>
 
@@ -121,7 +121,7 @@ export default function ReferFriendPage() {
                     <select
                       value={countryCode}
                       onChange={(e) => setCountryCode(e.target.value)}
-                      className="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-3 pr-8 focus:ring-2 focus:ring-[#DC7867] focus:border-[#DC7867] transition-colors w-full sm:w-auto"
+                      className="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-3 pr-8 focus:ring-2 focus:ring-[#DC7867] focus:border-[#DC7867] transition-colors w-full sm:w-auto text-secondary-foreground"
                     >
                       <option value="+45">+45</option>
                       <option value="+1">+1</option>
@@ -135,7 +135,7 @@ export default function ReferFriendPage() {
                     placeholder="12 34 56 78"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
-                    className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#DC7867] focus:border-[#DC7867] transition-colors"
+                    className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#DC7867] focus:border-[#DC7867] transition-colors text-secondary-foreground"
                   />
                 </div>
               </div>

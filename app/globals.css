@@ -1,5 +1,5 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -121,5 +121,27 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Adding cursor pointer for interactive elements */
+  button:hover,
+  [role="button"]:hover,
+  a:hover,
+  input[type="button"]:hover,
+  input[type="submit"]:hover,
+  input[type="reset"]:hover,
+  .cursor-pointer:hover,
+  [data-clickable]:hover {
+    cursor: pointer;
+  }
+
+  /* Adding cursor pointer for selected text */
+  ::selection {
+    cursor: pointer;
+  }
+
+  /* Adding cursor pointer for specific interactive classes */
+  .hover\:cursor-pointer:hover {
+    cursor: pointer;
   }
 }

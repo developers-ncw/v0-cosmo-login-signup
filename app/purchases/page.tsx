@@ -1,26 +1,34 @@
 "use client"
 
+import type React from "react"
+
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import {
-  ArrowLeft,
-  Calendar,
-  MapPin,
-  MoreVertical,
-  ShoppingBag,
-  Home,
-  Gift,
-  Percent,
-  Package,
-  CreditCard,
-} from "lucide-react"
+import Header from "@/components/header"
+import { Calendar, MapPin, MoreVertical, ShoppingBag, Home, Gift, Percent, Package, CreditCard, X } from "lucide-react"
 import { useRouter } from "next/navigation"
+
+interface Purchase {
+  id: number
+  treatment: string
+  date: string
+  amount: string
+  status: string
+  location: string
+  dateShort: string
+  year: string
+  items?: Array<{
+    name: string
+    quantity: number
+    price: string
+  }>
+}
 
 export default function PurchasesPage() {
   const router = useRouter()
-  const [activeTab, setActiveTab] = useState<"recent" | "history">("recent")
+  const [selectedPurchase, setSelectedPurchase] = useState<Purchase | null>(null)
 
-  const recentPurchases = [
+  const allPurchases = [
     {
       id: 1,
       treatment: "Laser Facial Treatment",
@@ -30,6 +38,10 @@ export default function PurchasesPage() {
       location: "Copenhagen Center",
       dateShort: "15/10",
       year: "2025",
+      items: [
+        { name: "Laser Facial Treatment", quantity: 1, price: "2,200 DKK" },
+        { name: "Aftercare Serum", quantity: 1, price: "250 DKK" },
+      ],
     },
     {
       id: 2,
@@ -40,10 +52,12 @@ export default function PurchasesPage() {
       location: "Østerbro Clinic",
       dateShort: "28/09",
       year: "2025",
+      items: [
+        { name: "Premium Facial", quantity: 1, price: "1,800 DKK" },
+        { name: "Hydrating Mask", quantity: 2, price: "600 DKK" },
+        { name: "Vitamin C Serum", quantity: 1, price: "800 DKK" },
+      ],
     },
-  ]
-
-  const historyPurchases = [
     {
       id: 3,
       treatment: "Botox Treatment",
@@ -53,6 +67,7 @@ export default function PurchasesPage() {
       location: "Copenhagen Center",
       dateShort: "12/08",
       year: "2025",
+      items: [{ name: "Botox Injection", quantity: 1, price: "1,800 DKK" }],
     },
     {
       id: 4,
@@ -63,63 +78,34 @@ export default function PurchasesPage() {
       location: "Vesterbro Clinic",
       dateShort: "05/07",
       year: "2025",
+      items: [
+        { name: "Chemical Peel", quantity: 1, price: "1,000 DKK" },
+        { name: "Recovery Cream", quantity: 1, price: "200 DKK" },
+      ],
     },
   ]
 
+  const openReceiptModal = (purchase: Purchase) => {
+    setSelectedPurchase(purchase)
+  }
+
+  const closeReceiptModal = () => {
+    setSelectedPurchase(null)
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Escape") {
+      closeReceiptModal()
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1D3F4F] via-[#2A5A6B] to-[#1D3F4F] pb-20">
-      {/* Header */}
-      <header className="border-b border-white/10 bg-black/20 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={() => router.push("/dashboard")}
-                className="p-2 text-white/70 hover:text-white transition-colors"
-              >
-                <ArrowLeft className="w-5 h-5" />
-              </button>
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">C</span>
-                </div>
-                <div>
-                  <h1 className="text-white font-semibold">COSMO</h1>
-                  <p className="text-white/60 text-xs">AESTHETIC SERVICES</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-2 sm:space-x-4">
-              <select className="hidden sm:block bg-transparent text-white/70 text-sm border-none outline-none">
-                <option>English</option>
-              </select>
-              <Button
-                onClick={() => router.push("/book-time")}
-                className="bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white px-3 sm:px-6 py-2 rounded-xl transition-all duration-200 text-sm sm:text-base"
-              >
-                <span className="hidden sm:inline">Book a Time</span>
-                <span className="sm:hidden">Book</span>
-              </Button>
-              <Button
-                onClick={() => router.push("/signup")}
-                variant="ghost"
-                className="hidden sm:flex text-white/70 hover:text-white"
-              >
-                Log Out
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <div className="relative h-48 sm:h-64 overflow-hidden">
-        <img
-          src="/flat-lay-medical-elements-arrangement-with-copy-space (1).jpg"
-          alt="Luxury cosmetic products"
-          className="w-full h-full object-cover"
-        />
+        <img src="/flat-lay-(1).jpg" alt="Luxury cosmetic products" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30" />
         <div className="absolute inset-0 flex items-center justify-center">
           <h1 className="text-white font-serif font-medium leading-7 text-3xl sm:text-4xl lg:text-5xl">PURCHASES</h1>
@@ -127,156 +113,70 @@ export default function PurchasesPage() {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 py-6 sm:py-8">
-        {/* Tab Navigation */}
-        <div className="flex justify-center mb-6 sm:mb-8">
-          <div className="bg-white/5 backdrop-blur-sm border-white/10 rounded-xl p-1 flex border flex-row gap-2 sm:gap-3 w-full max-w-md">
-            <button
-              onClick={() => setActiveTab("recent")}
-              className={`flex-1 px-4 sm:px-6 py-2 rounded-lg font-medium transition-all duration-200 text-sm sm:text-base ${
-                activeTab === "recent"
-                  ? "bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] text-white shadow-lg"
-                  : "text-white/70 hover:text-white hover:bg-white/10"
-              }`}
-            >
-              Recent Purchases
-            </button>
-            <button
-              onClick={() => setActiveTab("history")}
-              className={`flex-1 px-4 sm:px-6 py-2 rounded-lg font-medium transition-all duration-200 text-sm sm:text-base ${
-                activeTab === "history"
-                  ? "bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] text-white shadow-lg"
-                  : "text-white/70 hover:text-white hover:bg-white/10"
-              }`}
-            >
-              Purchase History
-            </button>
-          </div>
-        </div>
-
         {/* Purchases List */}
         <div className="space-y-4 mb-[60px]">
-          {activeTab === "recent" &&
-            recentPurchases.map((purchase) => (
-              <div
-                key={purchase.id}
-                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-                  <div className="flex items-start space-x-4">
-                    {/* Date Circle */}
-                    <div className="bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] rounded-full w-14 h-14 sm:w-16 sm:h-16 flex flex-col items-center justify-center text-white flex-shrink-0">
-                      <span className="text-xs font-medium">{purchase.dateShort}</span>
-                      <span className="text-xs">{purchase.year}</span>
-                    </div>
+          {allPurchases.map((purchase) => (
+            <div
+              key={purchase.id}
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                <div className="flex items-start space-x-4">
+                  {/* Date Circle */}
+                  <div className="bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] rounded-full w-14 h-14 sm:w-16 sm:h-16 flex flex-col items-center justify-center text-white flex-shrink-0">
+                    <span className="text-xs font-medium">{purchase.dateShort}</span>
+                    <span className="text-xs">{purchase.year}</span>
+                  </div>
 
-                    {/* Purchase Details */}
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 truncate">
-                        {purchase.treatment}
-                      </h3>
-                      <div className="space-y-2">
-                        <div className="flex items-center text-white/70">
-                          <Calendar className="w-4 h-4 mr-2 flex-shrink-0" />
-                          <span className="text-sm truncate">{purchase.date}</span>
-                        </div>
-                        <div className="flex items-center text-white/70">
-                          <MapPin className="w-4 h-4 mr-2 flex-shrink-0" />
-                          <span className="text-sm truncate">{purchase.location}</span>
-                        </div>
-                        <div className="flex items-center text-white/70">
-                          <CreditCard className="w-4 h-4 mr-2 flex-shrink-0" />
-                          <span className="text-sm font-semibold">{purchase.amount}</span>
-                        </div>
-                        <div className="flex items-center">
-                          <div className="flex items-center text-green-400">
-                            <Package className="w-4 h-4 mr-2 flex-shrink-0" />
-                            <span className="text-sm font-medium">{purchase.status}</span>
-                          </div>
+                  {/* Purchase Details */}
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 truncate">{purchase.treatment}</h3>
+                    <div className="space-y-2">
+                      <div className="flex items-center text-white/70">
+                        <Calendar className="w-4 h-4 mr-2 flex-shrink-0" />
+                        <span className="text-sm truncate">{purchase.date}</span>
+                      </div>
+                      <div className="flex items-center text-white/70">
+                        <MapPin className="w-4 h-4 mr-2 flex-shrink-0" />
+                        <span className="text-sm truncate">{purchase.location}</span>
+                      </div>
+                      <div className="flex items-center text-white/70">
+                        <CreditCard className="w-4 h-4 mr-2 flex-shrink-0" />
+                        <span className="text-sm font-semibold">{purchase.amount}</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="flex items-center text-green-400">
+                          <Package className="w-4 h-4 mr-2 flex-shrink-0" />
+                          <span className="text-sm font-medium">{purchase.status}</span>
                         </div>
                       </div>
                     </div>
                   </div>
+                </div>
 
-                  {/* Actions */}
-                  <div className="flex items-center justify-end space-x-2 sm:flex-col sm:space-x-0 sm:space-y-2">
-                    <Button className="bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white px-4 py-2 rounded-xl transition-all duration-200 text-sm">
-                      View Receipt
-                    </Button>
-                    <button className="p-2 text-white/70 hover:text-white transition-colors">
-                      <MoreVertical className="w-5 h-5" />
-                    </button>
-                  </div>
+                {/* Actions */}
+                <div className="flex items-center justify-end space-x-2 sm:flex-col sm:space-x-0 sm:space-y-2">
+                  <Button
+                    onClick={() => openReceiptModal(purchase)}
+                    className="bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white px-4 py-2 rounded-xl transition-all duration-200 text-sm"
+                  >
+                    View Receipt
+                  </Button>
+                  <button className="p-2 text-white/70 hover:text-white transition-colors">
+                    
+                  </button>
                 </div>
               </div>
-            ))}
-
-          {activeTab === "history" &&
-            historyPurchases.map((purchase) => (
-              <div
-                key={purchase.id}
-                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-                  <div className="flex items-start space-x-4">
-                    {/* Date Circle */}
-                    <div className="bg-white/20 rounded-full w-14 h-14 sm:w-16 sm:h-16 flex flex-col items-center justify-center text-white/70 flex-shrink-0">
-                      <span className="text-xs font-medium">{purchase.dateShort}</span>
-                      <span className="text-xs">{purchase.year}</span>
-                    </div>
-
-                    {/* Purchase Details */}
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-lg sm:text-xl font-semibold text-white/80 mb-2 truncate">
-                        {purchase.treatment}
-                      </h3>
-                      <div className="space-y-2">
-                        <div className="flex items-center text-white/60">
-                          <Calendar className="w-4 h-4 mr-2 flex-shrink-0" />
-                          <span className="text-sm truncate">{purchase.date}</span>
-                        </div>
-                        <div className="flex items-center text-white/60">
-                          <MapPin className="w-4 h-4 mr-2 flex-shrink-0" />
-                          <span className="text-sm truncate">{purchase.location}</span>
-                        </div>
-                        <div className="flex items-center text-white/60">
-                          <CreditCard className="w-4 h-4 mr-2 flex-shrink-0" />
-                          <span className="text-sm font-semibold">{purchase.amount}</span>
-                        </div>
-                        <div className="flex items-center">
-                          <div className="flex items-center text-green-400/70">
-                            <Package className="w-4 h-4 mr-2 flex-shrink-0" />
-                            <span className="text-sm font-medium">{purchase.status}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Actions */}
-                  <div className="flex items-center justify-end space-x-2 sm:flex-col sm:space-x-0 sm:space-y-2">
-                    <Button className="bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white px-4 py-2 rounded-xl transition-all duration-200 text-sm">
-                      View Receipt
-                    </Button>
-                    <button className="p-2 text-white/70 hover:text-white transition-colors">
-                      <MoreVertical className="w-5 h-5" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
+            </div>
+          ))}
         </div>
 
         {/* Empty State */}
-        {((activeTab === "recent" && recentPurchases.length === 0) ||
-          (activeTab === "history" && historyPurchases.length === 0)) && (
+        {allPurchases.length === 0 && (
           <div className="text-center py-12">
             <ShoppingBag className="w-16 h-16 text-white/30 mx-auto mb-4" />
             <h3 className="text-xl font-semibold text-white/70 mb-2">No purchases found</h3>
-            <p className="text-white/50 mb-6 px-4">
-              {activeTab === "recent"
-                ? "You don't have any recent purchases."
-                : "You don't have any purchase history yet."}
-            </p>
+            <p className="text-white/50 mb-6 px-4">You don't have any purchases yet.</p>
             <Button
               onClick={() => router.push("/book-time")}
               className="bg-gradient-to-r from-[#ec8a4a] to-[#dc7867] hover:from-[#dc7867] hover:to-[#ec8a4a] text-white px-6 py-3 rounded-xl transition-all duration-200"
@@ -287,8 +187,92 @@ export default function PurchasesPage() {
         )}
       </div>
 
+      {selectedPurchase && (
+        <div
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={closeReceiptModal}
+          onKeyDown={handleKeyDown}
+          tabIndex={-1}
+        >
+          <div
+            className="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="bg-gradient-to-r from-[#1D3F4F] to-[#2A5A6B] text-white p-6 rounded-t-2xl relative">
+              <button
+                onClick={closeReceiptModal}
+                className="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-full transition-colors"
+                aria-label="Close receipt"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* COSMO Header */}
+              <div className="text-center mb-4">
+                <h2 className="text-2xl font-serif font-bold">COSMO</h2>
+                <p className="text-white/80 text-sm">Beauty & Wellness Center</p>
+              </div>
+
+              <div className="text-center">
+                <h3 className="text-lg font-semibold">Receipt</h3>
+                <p className="text-white/80 text-sm">{selectedPurchase.date}</p>
+              </div>
+            </div>
+
+            {/* Receipt Content */}
+            <div className="p-6">
+              {/* Treatment Info */}
+              <div className="mb-6">
+                <h4 className="font-semibold text-gray-800 mb-2">Treatment Details</h4>
+                <p className="text-gray-600 mb-1">{selectedPurchase.treatment}</p>
+                <p className="text-gray-500 text-sm flex items-center">
+                  <MapPin className="w-4 h-4 mr-1" />
+                  {selectedPurchase.location}
+                </p>
+              </div>
+
+              {/* Line Items */}
+              <div className="mb-6">
+                <h4 className="font-semibold text-gray-800 mb-3">Items</h4>
+                <div className="space-y-2">
+                  {selectedPurchase.items?.map((item, index) => (
+                    <div
+                      key={index}
+                      className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0"
+                    >
+                      <div className="flex-1">
+                        <p className="text-gray-800 font-medium">{item.name}</p>
+                        <p className="text-gray-500 text-sm">Qty: {item.quantity}</p>
+                      </div>
+                      <p className="text-gray-800 font-semibold">{item.price}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Total */}
+              <div className="border-t-2 border-gray-200 pt-4">
+                <div className="flex justify-between items-center">
+                  <p className="text-lg font-bold text-gray-800">Total</p>
+                  <p className="text-lg font-bold text-[#DC7867]">{selectedPurchase.amount}</p>
+                </div>
+              </div>
+
+              {/* Status */}
+              <div className="mt-4 text-center">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                  <Package className="w-4 h-4 mr-1" />
+                  {selectedPurchase.status}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-[#1D3F4F]/90 backdrop-blur-sm border-t border-[#3A6A7B]/30">
+      <nav className="fixed bottom-0 left-0 right-0 bg-[#1D3F4F]/90 backdrop-blur-sm border-t border-[#3A6A7B]/30 z-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-around py-4">
             <button

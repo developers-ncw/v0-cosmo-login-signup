@@ -91,9 +91,9 @@ export default function EditProfilePage() {
                 <span className="sm:hidden">BOOK</span>
               </Button>
               <Button
-                onClick={() => router.push("/signup")}
+                onClick={() => router.push("/login")} // Navigate to login page instead of signup
                 variant="ghost"
-                className="hidden sm:flex text-white/70 hover:text-white"
+                className="hidden sm:flex text-white/70"
               >
                 Log Out
               </Button>
@@ -109,7 +109,9 @@ export default function EditProfilePage() {
           <Button
             onClick={() => router.push("/profile")}
             variant="ghost"
-            className="text-white/70 hover:text-white w-fit"
+            className="text-white/70 hover:text-white w-fit bg-transparent
+           transition-all duration-200 rounded-md px-4 py-2
+           hover:bg-gradient-to-r hover:from-[#ec8a4a] hover:to-[#dc7867] w-fit"
           >
             Back
           </Button>
