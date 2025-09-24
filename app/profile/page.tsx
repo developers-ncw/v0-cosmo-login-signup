@@ -59,7 +59,7 @@ export default function ProfilePage() {
                 <span className="sm:hidden">BOOK</span>
               </Button>
               <button
-                onClick={() => router.push("/login")}
+                onClick={() => router.push("/login")} // Navigate to login page instead of signup
                 className="hidden sm:flex items-center gap-2 text-white/70 dark:text-gray-300 hover:text-white dark:hover:text-gray-100 transition-colors"
               >
                 <LogOut className="w-4 h-4" />
