@@ -16,12 +16,12 @@ export default function DashboardPage() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         {/* Hero Banner */}
-        <div className="relative rounded-2xl overflow-hidden mb-8 sm:mb-12 h-64 sm:h-80">
+        <div className="relative rounded-2xl overflow-hidden mb-8 sm:mb-12 h-80 sm:h-96">
           <div className="absolute inset-0">
             <img
               src="/professional-doctor-consulting-patient-in-modern-h.jpg"
               alt="Professional healthcare treatment"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-[50%_20%]"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#1D3F4F]/60 via-[#2A5A6B]/40 to-transparent dark:from-gray-900/60 dark:via-gray-800/40" />
           </div>
@@ -152,9 +152,9 @@ export default function DashboardPage() {
           <div className="relative rounded-2xl overflow-hidden h-40 sm:h-48">
             <div className="absolute inset-0">
               <img
-                src="/professional-doctor-in-white-coat-consulting-with-.jpg"
+                src="new3doctor.png"
                 alt="Professional doctor consultation"
-                className="w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#de7b64]/80 to-[#de7b64]/40 dark:from-orange-600/80 dark:to-orange-600/40" />
             </div>
@@ -175,12 +175,12 @@ export default function DashboardPage() {
           <div className="relative rounded-2xl overflow-hidden h-40 sm:h-48">
             <div className="absolute inset-0">
               <img
-                src="/facebook-community-banner.jpg"
+                src="ChatGPT.png"
                 alt="Join our Facebook community"
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="relative z-10 flex justify-center h-full text-center px-4 items-center mt-10">
+            <div className="relative z-10 flex flex-col justify-end items-center h-full text-center px-4 pb-6">
               <div>
                 <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
                   <Button
